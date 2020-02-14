@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "406598966748",
+    "firebase_url": "https://smarteducation-ab403.firebaseio.com",
+    "project_id": "smarteducation-ab403",
+    "storage_bucket": "smarteducation-ab403.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406598966748:android:6b40b4ee947860157a4319",
+        "android_client_info": {
+          "package_name": "com.example.smart_education_hack36"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406598966748-pj7a5fnfd09pkt8jrk9jmq6aghlil6ti.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGQrgFoTrv7n6BSfWMRbZ_kJveFJI_EMk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "406598966748-pj7a5fnfd09pkt8jrk9jmq6aghlil6ti.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
