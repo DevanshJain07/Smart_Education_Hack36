@@ -3,17 +3,24 @@
 <title>
     Smart Education
 </title>
-<link rel="stylesheet" href="job.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/job.css') }}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<script src="job.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script src="{{ url_for('static', filename='js/jobs.js') }}"></script>
+<script src="{{ url_for('static', filename='js/job.js') }}"></script>
     </head>
 <body>
-    <section id="nav-bar">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <section id="nav-bar mb-2">
+        <nav class="navbar py-2 navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Smart Education</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
              <i class="fa fa-bars"></i>
@@ -23,10 +30,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                  <a class="nav-link" href="index.html">Home </a>
+                  <a class="nav-link" href="/">Home </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="job.html">Jobs</a>
+                  <a class="nav-link" href="/job">Jobs</a>
                 </li>
              
                 <li class="nav-item">
@@ -35,10 +42,10 @@
                  
                  
                   <li class="nav-item">
-                    <a class="nav-link" href="logsignindex.html">Login </a>
+                    <a class="nav-link" href="#">Login </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="logsignindex.html">Signup </a>
+                    <a class="nav-link" href="#">Signup </a>
                   </li>
             </ul>
             </div>
@@ -52,10 +59,9 @@
           <p>Machine Learning</p>
           <p>Android Development</p>
           <p>Web Development</p>
-          
-      </div>
+        </div>
       <div class="row">
-          <div class="col-md-6">
+          <div id="job-cards" class="col-md-6">
               <div class="btn-group">
                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Sector
@@ -98,31 +104,11 @@
               </div>
               <br><br><br>
         
-              <div class="card my-3" style="max-width: 80%;">
-                <div class="card-body">
-                  <h5 class="card-title">Python developer</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="card-link">Apply</a>
-                  <a href="#" class="card-link">Description</a>
-                </div>
-              </div>
-              
-              <div class="card my-3" style="max-width: 80%;">
-                <div class="card-body">
-                  <h5 class="card-title">PHP developer</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="card-link">Apply</a>
-                  <a href="#" class="card-link">Description</a>
-                </div>
-              </div>
-              
           </div>
-          <div class="col-md-6 px-3">
-              <div class="position-fixed mx-3 pr-3">
-                  <div class="head h3">Description : </div><br>
-                <div class="des-text">
+          <div class="col-md-6 px-3 pt-2 shadow">
+              <div class="mx-3 pr-3">
+                <div class="head h3">Description : </div><br>
+                <div id="Description" class="des-text">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, architecto hic?
                 Ad laudantium magnam corporis non libero ipsam nostrum quos obcaecati facere modi
                 aliquam soluta porro, quas delectus? Delectus ducimus expedita libero facere animi
@@ -135,5 +121,52 @@
               </div>
           </div>
       </div>
+    </div>
+      <section id="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 footer-box" style="bottom: 0px;">
+              <img src="Jelly-Preloader.gif">
+              <p>Thanks for visiting my websites.Feel privilaged that you got the opportunity to visit my website.</p>
+            </div>
+            <div class="col-md-4 footer-box" style="bottom: 0px;">
+              <p><b>CONTACT US</b></p>
+              <p><i class="fa fa-map-marker-alt"></i>NIT PATNA, CSE</p>
+              <p><i class="fa fa-phone"></i>+91 7977155843</p>
+              <p><i class="fa fa-envelope-o"></i>devanshsampatjain@gmail.com</p>
+            </div>
+            <div class="col-md-4 footer-box" style="bottom: 0px;">
+              <p><b>SUBSCRIBE NEWSLETTER</b></p>
+              <input type="email" class="form-control" placeholder="Your email">
+              <button type="button" class="btn btn-primary">Subscribe</button>
+            </div>
+          </div>
+          <hr>
+          <p class="copyright">Website Crafted by Devansh Jain and Bhuwan Chandra.</p>
+        </div>
+      </section>
+
+
+      <script>
+
+        const openDesc = function(cnt){
+          document.getElementById('Description').innerHTML = data[cnt].description;
+        }
+
+        let i = 0;
+        var cards = "";
+        data.forEach(element => {
+          if(i < 12){
+          document.getElementById('Description').innerHTML = data[0].description;
+          cards += '<div class="card my-3 shadow" style="max-width: 80%;"><div class="card-body" ><h5 class="card-title">' + element.title + '</h5><h6 class="card-subtitle mb-2 text-muted">Company - ' + element.company + '</h6><p>Location - ' + element.location + '</p><br><p>Published at - ' + element.created_at + '</p><a href="' + element.url + '" target="_blank" class="card-link">Apply</a><a href="#" onclick="openDesc('+ i +')" class="card-link">Description</a></div ></div >'
+          i++;
+          console.log(element.title);
+          }
+        });
+        console.log(cards);
+        
+        document.getElementById("job-cards").innerHTML += cards;
+
+      </script>
 </body>
-    </html>
+</html>

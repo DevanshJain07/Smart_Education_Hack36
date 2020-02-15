@@ -9,20 +9,20 @@ import json
 import time
 from bs4 import BeautifulSoup
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
 model = pickle.load(open('model.pkl', 'rb'))
 
-url = 'https://www.linkedin.com/jobs/search/?keywords=Software%20Development%20'
+url = 'https://jobs.github.com/positions.json?description=python'
 response = requests.get(url)
 
 soup = BeautifulSoup(response.text, "html.parser")
 
 
-def jsonData():
-  uri = "https://jobs.github.com/positions.json?description=python"
-  r = requests.get(uri)
-  print(r.json())
-  return r.json()
+# def jsonData():
+#   uri = "https://jobs.github.com/positions.json?description=python"
+#   r = requests.get(uri)
+#   print(r.json())
+#   return r.json()
 # loops = open("file.txt", "r")
 
 # for lines in loops.readlines():
@@ -30,10 +30,10 @@ def jsonData():
 
 # loops.close()
 
-# file = open("templates/file.html", "w", encoding='utf-8')
+# file = open("static/js/jobs.js", "w", encoding='utf-8')
 
-# # for points in soup.find_all('div', {"class": "job-card-search--column"}):
-# #     point = str(points.text)
+# for points in soup.find_all('div', {"class": "job-card-search--column"}):
+#     point = str(points.text)
 
 # file.write(str(soup.prettify()))
     
@@ -51,7 +51,11 @@ def home():
     # print(data)
     # print(data)
     
-    return render_template('index.html', data=str(jsonData()))
+    return render_template('index.html')
+
+@app.route('/job', methods=['GET'])
+def jobs():
+    return render_template('job.html')
 
 
 @app.route('/predict', methods=['POST'])
