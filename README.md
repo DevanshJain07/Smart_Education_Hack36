@@ -1,0 +1,2 @@
+# Smart_Education_Hack36
+The objective is to develop an android application to predict the future jobs based on locations, sector, etc. and to collect data from different job sites and predict the future requirements of education. Depending on the future requirement of education our users can choose their courses so as to have maximum possibilty of getting those future jobs and thus reduce the possibility of unemployement.
