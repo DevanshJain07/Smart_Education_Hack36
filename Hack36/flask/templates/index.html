@@ -32,21 +32,7 @@
 #login .container #login-row #login-column #login-box #login-form #register-link {
   margin-top: -40px;
 }
-body {
-		  margin: 0 auto;
-		  display: table;
-			font-family: "Helvetica Neue", sans-serif;
-		}
-		.regression {
-		  stroke-width: 2px;
-		  stroke: steelblue;
-		  stroke-dasharray: 10,5;
-		}
-		.equationSt {
-			font-size: 12px;
-            margin-top: 10px;
-            margin-left: 40px;
-		}
+
 </style>
     </head>
 <body>
@@ -171,20 +157,25 @@ body {
     <section id="prediction">
         <div class="container">
             <h1 class="title text-center">PREDICTIONS OF RISE AND FALL</h1>
-            <div class="row offset-1">
+            <div class="row">
                 <div class="col-md-6 prediction">
-                    <div class="chart1"></div>
+                    <!-- <div class="chart1"></div>
                     <div class="equation1 equationSt"></div>
-                    <div class="equation1 equationSt"></div>
-                    
+                    <div class="equation1 equationSt"></div> -->
+                    <img src="{{ url_for('static', filename='images/web.png') }}" alt="" style="max-width: 100%;" srcset="">
+                    <br>
+                    <div class="text-dark mt-2 h4 ml-3">Rise in Web Technology jobs</div>
                 </div>
                 <div class="col-md-6 prediction">
-                    <div class="chart2"></div>
+                    <!-- <div class="chart2"></div>
                     <div class="equation2 equationSt"></div>
-                    <div class="equation2 equationSt"></div>
+                    <div class="equation2 equationSt"></div> -->
+                    <img src="{{ url_for('static', filename='images/AI.png') }}" alt="" style="max-width: 100%;" srcset="">
+                    <br>
+                    <div class="text-dark mt-2 h4 ml-3">Rise in AI Technology jobs</div>
                 </div>
             </div>
-            <a href="prediction.html">Read more...</a>
+            <a href="/predict">Read more...</a>
         </div>
     </section>
 
@@ -246,8 +237,9 @@ body {
           </div>
     </div>
     </div>
-    </div>
     <a href="/job">Read more...</a>
+    </div>
+    
 
     </section>
 
@@ -307,13 +299,13 @@ body {
         document.getElementById("job-cards").innerHTML = cards;
 
     </script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
     <script src="{{ url_for('static', filename='js/scroll.js') }}"></script>
     <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
     <script src="{{ url_for('static', filename='js/graph.js') }}"></script>
     <script>
-    createGraph("{{ url_for('static', filename='csvs/web.csv') }}", ".chart1", "equation1");
-    createGraph("{{ url_for('static', filename='csvs/AI.csv') }}", ".chart2", "equation2");
+    // createGraph("{{ url_for('static', filename='csvs/web.csv') }}", ".chart1", "equation1");
+    // createGraph("{{ url_for('static', filename='csvs/AI.csv') }}", ".chart2", "equation2");
 	var scroll = new SmoothScroll('a[href*="#"]');
 </script>
     

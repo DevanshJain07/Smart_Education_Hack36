@@ -1,0 +1,266 @@
+<html>
+
+<head>
+    <title>
+        Smart Education
+    </title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/jobs.js') }}"></script>
+    <style>
+        #login .container #login-row #login-column #login-box {
+            margin-top: 60spx;
+            max-width: 700px;
+            height: 320px;
+            border: 1px solid #9C9C9C;
+            background-color: #EAEAEA;
+        }
+
+        #login .container #login-row #login-column #login-box #login-form {
+            padding: 20px;
+        }
+
+        #login .container #login-row #login-column #login-box #login-form #register-link {
+            margin-top: -40px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <section id="nav-bar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Smart Education</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/predict">Trending</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/job">Jobs</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#social-media">About Us </a>
+                        <p></p>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Contact </a>
+                        <p></p>
+                    </li>
+
+                    <li id="login-link" class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModalCenter">Login </a>
+                    </li>
+                    <li id="signup-link" class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#SignupModal">Signup </a>
+                    </li>
+                    <li id="profile-link" style="display: none;" class="nav-item">
+                        <a class="nav-link" href="#">Profile </a>
+                    </li>
+                    <li id="signout-link" style="display: none;" class="nav-item">
+                        <a class="nav-link" href="#" onclick="userSignOut()">SignOut </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close pr-2" data-dismiss="modal" aria-label="Close">
+                    <span class="float-right" ria-hidden="true">&times;</span>
+                </button>
+                <div id="login">
+                    <div id="login-row" class="row justify-content-center align-items-center">
+                        <div id="login-column" class="col-md-6">
+                            <div id="login-box" class="col-md-12">
+                                <form id="login-form" class="form" action="" method="post">
+                                    <h3 class="text-center text-info mt-3">Login</h3>
+                                    <div class="form-group">
+                                        <label for="username" class="text-info">Email :</label><br>
+                                        <input type="text" name="username" id="signin-email" class="form-control"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password" class="text-info">Password:</label><br>
+                                        <input type="password" name="password" id="signin-pass" class="form-control"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="remember-me" class="text-info"><span>Remember me</span> <span><input
+                                                    id="remember-me" name="remember-me"
+                                                    type="checkbox"></span></label><br>
+                                        <input type="button" name="submit" onclick="userSignIn()"
+                                            class="btn btn-info btn-md" value="Login">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="SignupModal" tabindex="-1" role="dialog" aria-labelledby="SignupModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close pr-2" data-dismiss="modal" aria-label="Close">
+                    <span class="float-right" ria-hidden="true">&times;</span>
+                </button>
+                <div id="login">
+                    <div id="login-row" class="row justify-content-center align-items-center">
+                        <div id="login-column" class="col-md-6">
+                            <div id="login-box" class="col-md-12">
+                                <form id="signup-form" class="form" action="" method="post">
+                                    <h3 class="text-center text-info mt-3">Signup</h3>
+                                    <div class="form-group">
+                                        <label for="username" class="text-info">Email:</label><br>
+                                        <input type="text" name="username" id="signup-email" class="form-control"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password" class="text-info">Password:</label><br>
+                                        <input type="password" name="password" id="signup-pass" class="form-control"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cnf-password" class="text-info">Confirm Password:</label><br>
+                                        <input type="password" name="password" id="cnf-password" class="form-control"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="button" name="submit" onclick="userSignUp()"
+                                            class="btn btn-info btn-md" value="Signup">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<section id="prediction">
+    <div class="container">
+        <h1 class="title text-center">PREDICTIONS OF RISE AND FALL</h1>
+        <div class="row offset-1">
+            <div class="col-md-6 prediction">
+                <!-- <div class="chart1"></div>
+                <div class="equation1 equationSt"></div>
+                <div class="equation1 equationSt"></div> -->
+                <img src="{{ url_for('static', filename='images/AI.png') }}" alt="" style="max-width: 100%;" srcset="">
+                <br>
+                <div class="text-dark mt-2 h4 ml-3">Rise in AI Technology jobs</div>
+            </div>
+            <div class="col-md-6 prediction">
+                <!-- <div class="chart2"></div>
+                <div class="equation2 equationSt"></div>
+                <div class="equation2 equationSt"></div> -->
+                <img src="{{ url_for('static', filename='images/web.png') }}" alt="" style="max-width: 100%;" srcset="">
+                <br>
+                <div class="text-dark mt-2 h4 ml-3">Rise in web Technology jobs</div>
+            </div>
+            <div class="col-md-6 prediction">
+                <!-- <div class="chart3"></div>
+                <div class="equation3 equationSt"></div>
+                <div class="equation3 equationSt"></div> -->
+                <img src="{{ url_for('static', filename='images/ML.png') }}" alt="" style="max-width: 100%;" srcset="">
+                <br>
+                <div class="text-dark mt-2 h4 ml-3">Rise in ML Technology jobs</div>
+            </div>
+            <div class="col-md-6 prediction">
+                <!-- <div class="chart4"></div>
+                <div class="equation4 equationSt"></div>
+                <div class="equation4 equationSt"></div> -->
+                <img src="{{ url_for('static', filename='images/android.png') }}" alt="" style="max-width: 100%;" srcset="">
+                <br>
+                <div class="text-dark mt-2 h4 ml-3">Rise in android Technology jobs</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+    <section id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 footer-box" style="bottom: 0px;">
+                    <img src="{{ url_for('static', filename='images/jelly-p.gif') }}">
+                    <p>Thanks for visiting my websites.Feel privilaged that you got the opportunity to visit my website.</p>
+                </div>
+                <div class="col-md-4 footer-box" style="bottom: 0px;">
+                    <p><b>CONTACT US</b></p>
+                    <p><i class="fa fa-map-marker-alt"></i>NIT PATNA, CSE</p>
+                    <p><i class="fa fa-phone"></i>+91 7977155843</p>
+                    <p><i class="fa fa-envelope-o"></i>devanshsampatjain@gmail.com</p>
+                </div>
+                <div class="col-md-4 footer-box" style="bottom: 0px;">
+                    <p><b>SUBSCRIBE NEWSLETTER</b></p>
+                    <input type="email" class="form-control" placeholder="Your email">
+                    <button type="button" class="btn btn-primary">Subscribe</button>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Website Crafted by Devansh Jain and Bhuwan Chandra.</p>
+        </div>
+    </section>
+
+
+
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scroll.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/graph.js') }}"></script>
+    <script>
+        createGraph("{{ url_for('static', filename='csvs/web.csv') }}", ".chart1", "equation1");
+        createGraph("{{ url_for('static', filename='csvs/AI.csv') }}", ".chart2", "equation2");
+        createGraph("{{ url_for('static', filename='csvs/AI.csv') }}", ".chart3", "equation3");
+        createGraph("{{ url_for('static', filename='csvs/AI.csv') }}", ".chart4", "equation4");
+        var scroll = new SmoothScroll('a[href*="#"]');
+    </script>
+    
+    </body>
+    
+    </html>

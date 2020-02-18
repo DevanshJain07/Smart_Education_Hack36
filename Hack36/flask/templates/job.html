@@ -19,47 +19,132 @@
 <script src="{{ url_for('static', filename='js/job.js') }}"></script>
     </head>
 <body>
-    <section id="nav-bar mb-2">
-        <nav class="navbar py-2 navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Smart Education</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-             <i class="fa fa-bars"></i>
-
-          </button>
-          
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="/">Home </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/job">Jobs</a>
-                </li>
-             
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About Us </a>
-                  </li>
-                 
-                 
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Login </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Signup </a>
-                  </li>
-            </ul>
-            </div>
-          </nav>
-
+    <section id="nav-bar">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Smart Education</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa fa-bars"></i>
+    
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/predict">Trending</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/job">Jobs</a>
+            </li>
+    
+            <li class="nav-item">
+              <a class="nav-link" href="#social-media">About Us </a>
+              <p></p>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#footer">Contact </a>
+              <p></p>
+            </li>
+    
+            <li id="login-link" class="nav-item">
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModalCenter">Login </a>
+            </li>
+            <li id="signup-link" class="nav-item">
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#SignupModal">Signup </a>
+            </li>
+            <li id="profile-link" style="display: none;" class="nav-item">
+              <a class="nav-link" href="#">Profile </a>
+            </li>
+            <li id="signout-link" style="display: none;" class="nav-item">
+              <a class="nav-link" href="#" onclick="userSignOut()">SignOut </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </section>
-    <div class="container">
-        <input class="form-control" id="anythingSearch" type="text" placeholder="Type something to search list items">
+    
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <button type="button" class="close pr-2" data-dismiss="modal" aria-label="Close">
+            <span class="float-right" ria-hidden="true">&times;</span>
+          </button>
+          <div id="login">
+            <div id="login-row" class="row justify-content-center align-items-center">
+              <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                  <form id="login-form" class="form" action="" method="post">
+                    <h3 class="text-center text-info mt-3">Login</h3>
+                    <div class="form-group">
+                      <label for="username" class="text-info">Email :</label><br>
+                      <input type="text" name="username" id="signin-email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="password" class="text-info">Password:</label><br>
+                      <input type="password" name="password" id="signin-pass" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me"
+                            name="remember-me" type="checkbox"></span></label><br>
+                      <input type="button" name="submit" onclick="userSignIn()" class="btn btn-info btn-md" value="Login">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade" id="SignupModal" tabindex="-1" role="dialog" aria-labelledby="SignupModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <button type="button" class="close pr-2" data-dismiss="modal" aria-label="Close">
+            <span class="float-right" ria-hidden="true">&times;</span>
+          </button>
+          <div id="login">
+            <div id="login-row" class="row justify-content-center align-items-center">
+              <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                  <form id="signup-form" class="form" action="" method="post">
+                    <h3 class="text-center text-info mt-3">Signup</h3>
+                    <div class="form-group">
+                      <label for="username" class="text-info">Email:</label><br>
+                      <input type="text" name="username" id="signup-email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="password" class="text-info">Password:</label><br>
+                      <input type="password" name="password" id="signup-pass" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="cnf-password" class="text-info">Confirm Password:</label><br>
+                      <input type="password" name="password" id="cnf-password" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="button" name="submit" onclick="userSignUp()" class="btn btn-info btn-md" value="Signup">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-3">
+        <!-- <input class="form-control" id="anythingSearch" type="text" placeholder="Type something to search list items">
         <div id="myDIV">
           <p>Artificial Intelligence</p>
           <p>Machine Learning</p>
           <p>Android Development</p>
           <p>Web Development</p>
-        </div>
+        </div> -->
       <div class="row">
           <div id="job-cards" class="col-md-6">
               <div class="btn-group">
@@ -80,9 +165,11 @@
                 </button>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="#">Detect Location</a>
-                  <a class="dropdown-item" href="#">Mumbai</a>
-                  <a class="dropdown-item" href="#">Delhi</a>
-                  <a class="dropdown-item" href="#">Bangalore</a>
+                  <a class="dropdown-item" href="#">Germany</a>
+                  <a class="dropdown-item" href="#">Switzerland</a>
+                  <a class="dropdown-item" href="#">Los Vegas</a>
+                  <a class="dropdown-item" href="#">San Francisco</a>
+                  <a class="dropdown-item" href="#">Houston</a>
                 </div>
               </div>
         
@@ -122,11 +209,12 @@
           </div>
       </div>
     </div>
+      
       <section id="footer">
         <div class="container">
           <div class="row">
             <div class="col-md-4 footer-box" style="bottom: 0px;">
-              <img src="Jelly-Preloader.gif">
+              <img src="{{ url_for('static', filename='images/jelly-p.gif') }}">
               <p>Thanks for visiting my websites.Feel privilaged that you got the opportunity to visit my website.</p>
             </div>
             <div class="col-md-4 footer-box" style="bottom: 0px;">
@@ -146,7 +234,6 @@
         </div>
       </section>
 
-
       <script>
 
         const openDesc = function(cnt){
@@ -156,11 +243,13 @@
         let i = 0;
         var cards = "";
         data.forEach(element => {
-          if(i < 12){
-          document.getElementById('Description').innerHTML = data[0].description;
-          cards += '<div class="card my-3 shadow" style="max-width: 80%;"><div class="card-body" ><h5 class="card-title">' + element.title + '</h5><h6 class="card-subtitle mb-2 text-muted">Company - ' + element.company + '</h6><p>Location - ' + element.location + '</p><br><p>Published at - ' + element.created_at + '</p><a href="' + element.url + '" target="_blank" class="card-link">Apply</a><a href="#" onclick="openDesc('+ i +')" class="card-link">Description</a></div ></div >'
-          i++;
-          console.log(element.title);
+          if(i < 15){
+            if (i == 0)
+            document.getElementById('Description').innerHTML = data[0].description;
+
+            cards += '<div class="card my-3 shadow" style="max-width: 80%;"><div class="card-body" ><h5 class="card-title">' + element.title + '</h5><h6 class="card-subtitle mb-2 text-muted">Company - ' + element.company + '</h6><p>Location - ' + element.location + '</p><br><p>Published at - ' + element.created_at + '</p><a href="' + element.url + '" target="_blank" class="card-link">Apply</a><a href="#" onclick="openDesc('+ i +')" class="card-link">Description</a></div ></div >'
+            i++;
+            console.log(element.title);
           }
         });
         console.log(cards);
