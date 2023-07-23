@@ -225,7 +225,7 @@ termcolor==1.1.0
 terminado==0.8.2
 testpath==0.4.4
 toolz==0.10.0
-tornado==6.0.3
+tornado==6.3.2
 tqdm==4.36.1
 traitlets==4.3.3
 twilio==6.35.2
